@@ -30,6 +30,8 @@ def download_secret_file():
 
 
 if __name__ == '__main__':
+    download_secret_file()
+
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
 
