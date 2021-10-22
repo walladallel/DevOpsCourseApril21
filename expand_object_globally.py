@@ -5,7 +5,7 @@ from botocore.exceptions import ClientError
 
 logging.basicConfig(level=logging.INFO)
 
-file_name = 'secret.txt'
+filename = 'secret_for_agents.txt'
 
 
 def upload_file(agent_name, bucket):
@@ -18,13 +18,21 @@ def upload_file(agent_name, bucket):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(file_name, bucket)
+        response = s3_client.upload_file(filename, bucket)
         logging.info(f'Uploading file to agent {agent_name} has been finished with response: {response}')
     except ClientError as e:
         logging.error(e)
 
 
+def download_secret_file():
+    s3 = boto3.client('s3')
+    # TODO change BUCKET_NAME and OBJECT_NAME
+    s3.download_file('BUCKET_NAME', 'OBJECT_NAME', filename)
+
+
 if __name__ == '__main__':
+    download_secret_file()
+
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
 
