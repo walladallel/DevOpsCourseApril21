@@ -27,7 +27,7 @@ def upload_file(agent_name, bucket):
 def download_secret_file():
     s3 = boto3.client('s3')
     # TODO change BUCKET_NAME and OBJECT_NAME
-    s3.download_file('BUCKET_NAME', 'OBJECT_NAME', filename)
+    s3.download_file('45678', 'OBJECT_NAME', filename)
 
 
 if __name__ == '__main__':
