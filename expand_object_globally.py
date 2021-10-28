@@ -2,7 +2,7 @@ import json
 import logging
 import boto3
 from botocore.exceptions import ClientError
-
+#logging as event, Confirmation that things are working as expected
 logging.basicConfig(level=logging.INFO)
 
 filename = 'secret_for_agents.txt'
@@ -16,6 +16,7 @@ def upload_file(agent_name, bucket):
     """
 
     # Upload the file
+    #Create a low-level service client by name using the default session.It allows you to directly create, update, and delete AWS resources from your Python scripts
     s3_client = boto3.client('s3')
     try:
         response = s3_client.upload_file(filename, bucket)
@@ -26,7 +27,7 @@ def upload_file(agent_name, bucket):
 
 def download_secret_file():
     s3 = boto3.client('s3')
-    # TODO change BUCKET_NAME and OBJECT_NAME
+    s3.download_file('mytripinitaly', 'secret.txt', filename)
     s3.download_file('BUCKET_NAME', 'OBJECT_NAME', filename)
 
 
@@ -35,5 +36,6 @@ if __name__ == '__main__':
 
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
-
+    for agent, bkt in agents_bucket.items():
+        upload_file(agent, bkt)
     # TODO use agents_bucket and upload_file to upload file_name to each agent's bucket
