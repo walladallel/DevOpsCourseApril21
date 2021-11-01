@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
   "agent_1": "london-region-ex1",
   "agent_2":  "north-virginia-ex1",
 
+=======
+  "agent_1": "north_virginia_bucket_name",
+  "agent_2":  "london_bucket_name"
+>>>>>>> master
 }
