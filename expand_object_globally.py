@@ -18,7 +18,7 @@ def upload_file(agent_name, bucket):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(filename, bucket , filename)
+        response = s3_client.upload_file(filename, bucket)
         logging.info(f'Uploading file to agent {agent_name} has been finished with response: {response}')
     except ClientError as e:
         logging.error(e)
@@ -26,7 +26,8 @@ def upload_file(agent_name, bucket):
 
 def download_secret_file():
     s3 = boto3.client('s3')
-    s3.download_file('mytripinitaly', 'secret.txt', filename)
+    # TODO change BUCKET_NAME and OBJECT_NAME
+    s3.download_file('BUCKET_NAME', 'OBJECT_NAME', filename)
 
 
 if __name__ == '__main__':
@@ -35,5 +36,4 @@ if __name__ == '__main__':
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
 
-for agent, bkt in agents_bucket.items():
-        upload_file(agent, bkt)
+    # TODO use agents_bucket and upload_file to upload file_name to each agent's bucket
