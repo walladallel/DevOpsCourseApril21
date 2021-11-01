@@ -18,7 +18,7 @@ def upload_file(agent_name, bucket):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(filename, bucket)
+        response = s3_client.upload_file(filename, bucket , filename)
         logging.info(f'Uploading file to agent {agent_name} has been finished with response: {response}')
     except ClientError as e:
         logging.error(e)
@@ -35,5 +35,5 @@ if __name__ == '__main__':
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
 
-    for agent, bkt in agents_bucket.items():
+for agent, bkt in agents_bucket.items():
         upload_file(agent, bkt)
