@@ -1,4 +1,4 @@
-def create1_user(client, *args):
+def create2_user(client, *args):
     print()
 
 
