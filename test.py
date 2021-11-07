@@ -1,5 +1,7 @@
-def create_user(client, *args):
+def create1_user(client, *args):
     print()
 
+
+create1_user('myclient', 1, None, 'ffff')
 
 create1_user('myclient', 1, None, 'ffff')
