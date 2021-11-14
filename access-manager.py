@@ -30,5 +30,5 @@ if __name__ == '__main__':
 
     iam_client = boto3.client('iam')
 
-    create_user('john')
-    delete_outdated_usernames(60)
+    # create_user('john')
+    # delete_outdated_usernames(60)
