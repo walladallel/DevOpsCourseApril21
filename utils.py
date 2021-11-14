@@ -11,24 +11,11 @@ def get_user_age_seconds(user_create_date):
     return (datetime.now(timezone.utc) - user_create_date).total_seconds()
 
 
-def compress(my_str):
+def most_frequent_char(my_str):
     """
-    Compress a string in the following way:
-    gggttthhjyyy  ->  g3t3h2jy3
-    abcdddddukkk  ->  abcd5uk3
-
-    :param my_str: string a-z only
-    :return: compressed string - sequences of the form XX...XXX transformed to XN
-             where N in the length of the sequence
+    returns the most frequent character in a string. If there are more than 1 frequent chars, return one of them
+    'abcdddddukkk'  ->  'd' repeats 5 times
+    'One day you said to me'  ->  ' ' repeats 5 times
+    'aabb' -> 'a' or 'b' are both valid returned values
     """
-
-
-def decompress(my_str):
-    """
-    Decompress a string:
-    sdfg4jfg3   ->  sdfggggjfggg
-    l5a2    ->  lllllaa
-
-    :param my_str:
-    :return:
-    """
+    pass
