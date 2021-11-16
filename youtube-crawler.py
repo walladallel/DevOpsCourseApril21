@@ -17,8 +17,7 @@ def search_download(search_str, search_results):
 
 
 if __name__ == '__main__':
-    # TODO you can change to any search string you want
-    downloaded_files = search_download('הגשש', 5)
+   downloaded_files = search_download('nirvana', 1)
 
     # TODO use downloaded_files and complete a few lines to upload them to an S3 bucket
 
