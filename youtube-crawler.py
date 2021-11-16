@@ -11,7 +11,7 @@ def search_download(search_str, search_results):
     :param search_results: number of results to download
     :return: a list of downloaded filenames
     """
-    with YoutubeDL({'format': 'bestaudio', 'noplaylist': 'True'}) as ydl:
+    with YoutubeDL({'format': 'bestaudio', 'noplaylist': 'False'}) as ydl:
         videos = ydl.extract_info(f"ytsearch{search_results}:{search_str}", download=True)['entries']
         return [ydl.prepare_filename(video) for video in videos]
 
