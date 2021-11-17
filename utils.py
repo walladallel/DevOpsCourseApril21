@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+
 
 
 def get_user_age_seconds(user_create_date):
