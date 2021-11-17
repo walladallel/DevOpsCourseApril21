@@ -14,5 +14,5 @@ def search_download(search_str, search_results):
 if __name__ == '__main__':
     downloaded_files = search_download('nirvana', 1)
     s3_client = boto3.client('s3')
-    s3_client.upload_file('downloaded_files','eyal_youtube', 'youtube_files')
+    s3_client.upload_file('eyalyoutube','downloaded_files', 'youtube_files')
 
