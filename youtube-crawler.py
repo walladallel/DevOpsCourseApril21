@@ -1,4 +1,8 @@
 from youtube_dl import YoutubeDL
+import json
+import logging
+import boto3
+from botocore.exceptions import ClientError
 
 
 def search_download(search_str, search_results):
@@ -20,4 +24,9 @@ if __name__ == '__main__':
    downloaded_files = search_download('nirvana', 1)
 
     # TODO use downloaded_files and complete a few lines to upload them to an S3 bucket
-
+s3_client = boto3.client('s3')
+    try:
+        response = s3_client.upload_file({'format': 'bestaudio', 'noplaylist': 'False'})
+        logging.info(f'Uploading file to agent {'format': 'bestaudio', 'noplaylist': 'False'} has been finished with response: {response}')
+    except ClientError as e:
+        logging.error(e)
