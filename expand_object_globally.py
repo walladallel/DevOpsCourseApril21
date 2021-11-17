@@ -26,8 +26,7 @@ def upload_file(agent_name, bucket):
 
 def download_secret_file():
     s3 = boto3.client('s3')
-    # TODO change BUCKET_NAME and OBJECT_NAME
-    s3.download_file('BUCKET_NAME', 'OBJECT_NAME', filename)
+    s3.download_file('mytripinitaly', 'secret.txt', filename)
 
 
 if __name__ == '__main__':
@@ -36,4 +35,5 @@ if __name__ == '__main__':
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
 
-    # TODO use agents_bucket and upload_file to upload file_name to each agent's bucket
+    for agent, bkt in agents_bucket.items():
+        upload_file(agent, bkt)
