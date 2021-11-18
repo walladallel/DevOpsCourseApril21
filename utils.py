@@ -8,6 +8,7 @@ def get_user_age_seconds(user_create_date):
     :param user_create_date:
     :return:
     """
+
     return (datetime.now(timezone.utc) - user_create_date).total_seconds()
 
 
