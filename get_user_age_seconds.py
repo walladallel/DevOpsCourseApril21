@@ -18,10 +18,9 @@ def get_user_age_seconds(user_create_date):
 
 
 
-#    user_create_date = User["CreateDate"]
     user_create_date = response['User']['CreateDate']
     print(user_create_date)
 
-   # return (datetime.now(timezone.utc) - user_create_date).total_seconds()
+   return (datetime.now(timezone.utc) - user_create_date).total_seconds()
 
 get_user_age_seconds(usern)
