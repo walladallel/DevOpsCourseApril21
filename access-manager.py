@@ -20,6 +20,10 @@ def delete_outdated_usernames(max_user_age_seconds):
     Deletes users older than max_user_age_seconds
     """
     # TODO List all users
+    client = boto3.client('iam')
+
+
+    response = client.list_users()
     # TODO Iterate over the users in "for" loop
     # TODO Inside the loop, use "get_user_age_seconds" from utils.py to check if the user is older than max_user_age_seconds
     # TODO Delete the user if his age is greater than max_user_age_seconds

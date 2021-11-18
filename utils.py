@@ -8,7 +8,7 @@ def get_user_age_seconds(user_create_date):
     :param user_create_date:
     :return:
     """
-    return (datetime.now(timezone.utc) - user_create_date).total_seconds()
+    return (datetime.now(timezone.utc) - ser_create_dateu).total_seconds()
 
 
 def most_frequent_char(my_str):
