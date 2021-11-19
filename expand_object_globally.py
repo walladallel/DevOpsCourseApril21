@@ -7,7 +7,7 @@ logging.basicConfig(level=logging.INFO)
 
 filename = 'secret_for_agents.txt'
 
-
+print("Marina")
 def upload_file(agent_name, bucket):
     """Upload a file to an S3 bucket
     :param agent_name:
