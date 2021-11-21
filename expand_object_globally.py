@@ -33,6 +33,5 @@ if __name__ == '__main__':
 
     with open('agents.json') as json_file:
         agents_bucket = json.load(json_file)
-
-    for agent, bkt in agents_bucket.items():
-        upload_file(agent, bkt)
+    upload_file('agent_1', 'london-agent')
+    upload_file('agent_2', 'north-virginia-agent')
