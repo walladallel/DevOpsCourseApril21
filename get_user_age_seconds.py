@@ -1,12 +1,11 @@
 import boto3
 from datetime import datetime, timezone
-
+client = boto3.client('iam')
 usern = input("Please Enter a user name: ")
 
 
-def get_user_age_seconds(user_create_date):
+def get_user_age_seconds(user_create_date,client):
 
-    client = boto3.client('iam')
 
     response = client.get_user(
         UserName= usern,
@@ -25,7 +24,7 @@ def get_user_age_seconds(user_create_date):
 
     return (datetime.now(timezone.utc) - user_create_date).total_seconds()
 
-get_user_age_seconds(usern)
+get_user_age_seconds(usern,client)
 
 
 
