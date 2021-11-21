@@ -1,5 +1,6 @@
 import boto3
 from datetime import datetime, timezone
+import delete_outdated_usernames
 client = boto3.client('iam')
 usern = input("Please Enter a user name: ")
 
