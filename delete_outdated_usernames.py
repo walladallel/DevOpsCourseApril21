@@ -1,5 +1,6 @@
 import boto3
 from botocore.exceptions import ClientError
+from get_user_age_seconds import get_user_age_seconds
 client = boto3.client('iam')
 
 
@@ -17,7 +18,9 @@ def delete_outdated_usernames(client):
 
     for x in range(len(users_d)):
         fo_user = (users_d[x]['UserName'])
-        print(fo_user)
+        #print(fo_user)
+        get_user_age_seconds(fo_user)
+
 
 
 
