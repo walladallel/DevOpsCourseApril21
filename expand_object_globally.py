@@ -17,7 +17,7 @@ def upload_file(agent_name, bucket):
     # Upload the file
     s3_client = boto3.client('s3')
     try:
-        response = s3_client.upload_file(filename, bucket)
+        response = s3_client.upload_file(filename, bucket, 'secret.txt')
         logging.info(f'Uploading file to agent {agent_name} has been finished with response: {response}')
     except ClientError as e:
         logging.error(e)
