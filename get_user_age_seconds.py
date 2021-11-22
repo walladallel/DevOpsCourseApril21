@@ -24,7 +24,8 @@ def get_user_age_seconds(username):
 
     return print("User ' {} ' is active (seconds):".format(username), (datetime.now(timezone.utc) - user_create_date).total_seconds())
 
-get_user_age_seconds()
+if __name__ == '__main__':
+    get_user_age_seconds("noamsint")
 
 
 
