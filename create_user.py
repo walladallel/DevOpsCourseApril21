@@ -1,9 +1,10 @@
 import boto3
 from botocore.exceptions import ClientError
-
 client = boto3.client('iam')
-
-def create1_user(username,client):
+def create_user(username):
+    """
+    Create a user "username" with an appropriate permissions (S3VideoReader you've just created)
+    """
 
     try:
         response = client.create_user(
@@ -16,11 +17,13 @@ def create1_user(username,client):
                 },
             ]
         )
-
+        print("Created user: {}".format(username))
     except ClientError as e:
         if e.response['Error']['Code'] == 'EntityAlreadyExists':
             print("User already exists")
         else:
             print("Unexpected error: %s" % e)
 
-create1_user("deftest",client)
+
+if __name__ == '__main__':
+    create_user("test1")

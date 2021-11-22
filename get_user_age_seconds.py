@@ -1,10 +1,11 @@
 import boto3
 from datetime import datetime, timezone
-
+from termcolor import colored
 #usern = input("Please Enter a user name: ")
 
 
 def get_user_age_seconds(username):
+
     client = boto3.client('iam')
     response = client.get_user(
         UserName=username,
@@ -19,13 +20,29 @@ def get_user_age_seconds(username):
     #print("User Name:", usern,)
     #print("Creation Date Is: " ,user_create_date,)
     #print("Todays date:" ,now,)
-    #print("User ' {} ' is active (seconds):".format(username), (datetime.now(timezone.utc) - user_create_date).total_seconds())
+    print("User ' {} ' is active (seconds):".format(username), (datetime.now(timezone.utc) - user_create_date).total_seconds())
+
+    seblimit = (172800.0)
+
+    user_seconds = (datetime.now(timezone.utc) - user_create_date).total_seconds()
+    global expired_sub
+    if user_seconds > seblimit:
+
+        expired_sub = True
+        print("User  ' {} ' is ".format(username),(colored('Expired', 'red')))
+        print("--------------------------------------------")
 
 
-    return print("User ' {} ' is active (seconds):".format(username), (datetime.now(timezone.utc) - user_create_date).total_seconds())
+    else:
+        expired_sub = False
+        print("--------------------------------------------")
+
+    return expired_sub
 
 if __name__ == '__main__':
-    get_user_age_seconds("noamsint")
+    get_user_age_seconds("test2")
+
+
 
 
 
