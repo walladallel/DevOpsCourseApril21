@@ -1,3 +1,3 @@
-import  get_user_age_seconds
+from get_user_age_seconds import get_user_age_seconds
 
-get_user_age_seconds(client)
+get_user_age_seconds("test")
