@@ -1,7 +1,6 @@
 import boto3
 from datetime import datetime, timezone
 from termcolor import colored
-#usern = input("Please Enter a user name: ")
 
 
 def get_user_age_seconds(username):
@@ -22,11 +21,10 @@ def get_user_age_seconds(username):
     #print("Todays date:" ,now,)
     print("User ' {} ' is active (seconds):".format(username), (datetime.now(timezone.utc) - user_create_date).total_seconds())
 
-    seblimit = (172800.0)
+    max_user_age_seconds = (172800.0)
 
     user_seconds = (datetime.now(timezone.utc) - user_create_date).total_seconds()
-    global expired_sub
-    if user_seconds > seblimit:
+    if user_seconds > max_user_age_seconds:
 
         expired_sub = True
         print("User  ' {} ' is ".format(username),(colored('Expired', 'red')))
@@ -36,11 +34,11 @@ def get_user_age_seconds(username):
     else:
         expired_sub = False
         print("--------------------------------------------")
-
+    print("Return",expired_sub,user_seconds,max_user_age_seconds)
     return expired_sub
 
 if __name__ == '__main__':
-    get_user_age_seconds("test2")
+    get_user_age_seconds("test")
 
 
 

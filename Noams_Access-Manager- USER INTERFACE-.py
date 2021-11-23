@@ -1,15 +1,20 @@
 from create_user import create_user
+from noams_youtube import search_download
 import pyfiglet
 
 welcome = pyfiglet.figlet_format("Youtube Crawler")
 print(welcome)
 
-# TODO insert a while loop here
-# Asking User to For a username to create a sub in app
-username=(input("Please Enter Your User Name: "))
-# Inserting input into create_user Function
-create_user(username)
-# TODO finish Youtube-crawaler and insert it here
+
+# Creating a username for Youtube Crawler
+create_user()
+#Welcome Message for newly subscribed user
+
+#Asking User for Serach_String
+#Sending Youtube-Crawler User Name and serach_String
+search_download()
+
+
 
 
 
