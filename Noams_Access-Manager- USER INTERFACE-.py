@@ -8,10 +8,10 @@ print(welcome)
 username = input("Enter Username: ")
 # Creating a username for Youtube Crawler
 create_user(username)
-"""Welcome Message for newly subscribed user
+#Welcome Message for newly subscribed user
 out = pyfiglet.figlet_format("Hello",username, font = "digital" )
 print(out)
-"""
+
 #Asking User for Serach_String
 search_str = input("Please Enter A Topic: ")
 #Sending Youtube-Crawler User Name and serach_String
