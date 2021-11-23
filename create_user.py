@@ -16,7 +16,7 @@ def create_user(username):
                 Tags=[
                     {
                         'Key': 'YoutubeAppSub',
-                        'Value': '1'
+                        'Value': username
                     },
                 ]
             )

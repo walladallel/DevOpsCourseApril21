@@ -3,42 +3,25 @@ import boto3
 from termcolor import colored
 s3_client = boto3.client('s3')
 
-username = "kkk"
-search_str ="nirvana"
-search_results="1"
+def search_download(search_str, search_results, username):
 
-def search_download(search_str, search_results ,username):
 
-    """
-    This function gets a search string and download the first search_results results
-    If you don't want to download the file every run, just to get the result metadata, change below
-    download=True to download=False
-
-    :param search_str:
-    :param search_results: number of results to download
-    :return: a list of downloaded filenames
-    """
-    with YoutubeDL({ 'format': 'bestaudio', 'noplaylist': 'True' ,}) as ydl:
+    with YoutubeDL({'format': 'bestaudio', 'noplaylist': 'True', }) as ydl:
         videos = ydl.extract_info(f"ytsearch{search_results}:{search_str}", download=True)['entries']
-        return [ydl.prepare_filename(video) for video in videos]
-
-
+        return [ydl.prepare_filename(video) for video in videos],
 
 if __name__ == '__main__':
+    downloaded_files = search_download(search_str,search_results,username)
+
     try:
-        downloaded_files = search_download(search_str,search_results,username)
         for a in downloaded_files:
             try:
-                s3_client.upload_file(a, 'youtube-crawler-bucket',username+"/"+a)
+                s3_client.upload_file(a, 'youtube-crawler-bucket', username + "/" + a)
                 print((colored("Successfully Downloaded {} ".format(a), 'green')))
             except Exception as g:
-               print("Error" , g)
-               exit(1)
+                print("Error", g)
+                exit(1)
 
     except Exception as e:
         print("Error", e)
         exit(1)
-
-
-
-
