@@ -20,7 +20,9 @@ def create_user(username):
                     },
                 ]
             )
-            print("successfully Created User {}".format(username))
+            print("--------------------------------------------")
+            print((colored("Successfully Created User {}".format(username), 'green')))
+            print("--------------------------------------------")
 
             break
 

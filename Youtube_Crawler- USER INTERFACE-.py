@@ -11,9 +11,10 @@ create_user(username)
 
 #Welcome Message for newly subscribed user
 print("Hello {} and Welcome to Youtube Crawler".format(username))
+print("--------------------------------------------")
 
 #Asking User for Serach_String
-search_str = input("Please Enter A Topic: ")
+search_str = input("Please Enter A Topic To Download: ")
 #Sending Youtube-Crawler User Name and serach_String
 search_download(search_str,1,username)
 
