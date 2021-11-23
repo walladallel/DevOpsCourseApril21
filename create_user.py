@@ -2,12 +2,12 @@ import boto3
 from botocore.exceptions import ClientError
 from termcolor import colored
 client = boto3.client('iam')
-def create_user():
+def create_user(username):
     """
     Create a user "username" with an appropriate permissions (S3VideoReader you've just created)
     """
     while True:
-        username = input("Insert username: ")
+
         try:
             response = client.create_user(
                 UserName= username,

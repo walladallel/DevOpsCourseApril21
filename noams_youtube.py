@@ -1,7 +1,10 @@
 from youtube_dl import YoutubeDL
 import boto3
+"""
 username = "Noamss"
-search_str ="10 sec video"
+search_str ="15 sec video"
+search_results="1"
+"""
 def search_download(search_str, search_results ,username):
 
     """
@@ -22,7 +25,8 @@ def search_download(search_str, search_results ,username):
 if __name__ == '__main__':
     # TODO you can change to any search string you want
     try:
-        downloaded_files = search_download(search_str,5,username)
+        downloaded_files = search_download(search_str,search_results,username)
+
     except Exception as e:
         print("Error", e)
         exit(1)
