@@ -7,4 +7,4 @@ def most_frequent_char(myword):
     print("The most frequent Char is:", collections.Counter(str_lower).most_common(1)[0])
 
 if __name__ == '__main__':
-    most_frequent_char("letsgOoS")
+    most_frequent_char("letsgodevops")
