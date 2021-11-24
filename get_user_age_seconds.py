@@ -1,6 +1,7 @@
 import boto3
 from datetime import datetime, timezone
 from termcolor import colored
+admin = "noamsint"
 
 
 def get_user_age_seconds(username):
@@ -23,10 +24,16 @@ def get_user_age_seconds(username):
 
     max_user_age_seconds = (172800.0)
 
-    user_seconds = (datetime.now(timezone.utc) - user_create_date).total_seconds()
-    if user_seconds > max_user_age_seconds:
 
+    user_seconds = (datetime.now(timezone.utc) - user_create_date).total_seconds()
+    if user_seconds > max_user_age_seconds and username !=(admin):
         expired_sub = True
+        """
+        if username == (admin):
+            print ("Admin user '{}' is not in Deletable".format(admin))
+        else:
+            pass
+            """
         print("User  ' {} ' is ".format(username),(colored('Expired', 'red')))
         print("--------------------------------------------")
 

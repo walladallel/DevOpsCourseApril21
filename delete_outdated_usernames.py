@@ -51,12 +51,12 @@ def delete_outdated_usernames():
             """
 
             try:
-                print("Trying To Delete User {}...".format(fo_user))
+                print((colored("Trying To Delete User {}...".format(fo_user), 'Yellow')))
                 print("--------------------------------------------")
                 response_del = client.delete_user(
                     UserName=fo_user
                 )
-                print(response_del)
+                #print(response_del)
                 print((colored('Deleted Successfully",fo_user', 'green')))
                 print("--------------------------------------------")
             except ClientError as e:
@@ -65,10 +65,9 @@ def delete_outdated_usernames():
 
 
             print("Getting users from IAM...")
-            response_userlist = client.list_users()
-            userlist =response_userlist['User']
-            for x in userlist:
-                print(x)
+            response = client.list_users()
+            users_list = (response['Users'])
+            print(users_list)
 
 
 
