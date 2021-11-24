@@ -18,9 +18,10 @@ create_user(username)
 print((colored("Hey '{}' And Welcome to Youtube Crawler Ver. 1.0.0-beta".format(username), 'magenta', attrs=['bold'],)))
 print("------------------------------------------------------------")
 
-# Asking User for Serach_String
+# Asking User for a Serach String
+# If you only want to download a test video enter ---> youtube-dl test video
+
 search_str = input("Please Enter A Topic To Download: ")
-#Testvid=("If you only want to download a test video enter ---> ","youtube-dl test video")
 
 # Calling Youtube-Crawler With search_str,search_results,username
 search_download(search_str,search_results,username)
