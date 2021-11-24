@@ -9,6 +9,7 @@ print(welcome)
 
 #Asking for Username and Creating a User
 username = input("Enter Username: ")
+
 # Creating a username for Youtube Crawler
 create_user(username)
 
@@ -20,7 +21,7 @@ print("--------------------------------------------")
 print("Test -->   ","youtube-dl test video")
 search_str = input("Please Enter A Topic To Download: ")
 
-#Sending Youtube-Crawler User Name and serach_String
+#Calling Youtube-Crawler With search_str,search_results,username
 search_download(search_str,search_results,username)
 
 

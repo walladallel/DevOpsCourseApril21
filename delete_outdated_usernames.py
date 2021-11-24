@@ -2,7 +2,8 @@ import boto3
 from botocore.exceptions import ClientError
 from get_user_age_seconds import get_user_age_seconds
 client = boto3.client('iam')
-
+from termcolor import colored
+admin = "noamsint"
 
 
 def delete_outdated_usernames():
@@ -10,6 +11,10 @@ def delete_outdated_usernames():
     Deletes users older than max_user_age_seconds
     """
     client = boto3.client('iam')
+
+    iam = boto3.resource('iam')
+
+    policy = iam.Policy('arn:aws:iam::955114013936:policy/S3VideoReader')
     response = client.list_users()
 
 
@@ -18,16 +23,54 @@ def delete_outdated_usernames():
 
     for x in range(len(users_d)):
         fo_user = users_d[x]['UserName']
-        #print(fo_user)
-        if get_user_age_seconds(fo_user) == True:
-            print("Deleting User {}".format(fo_user))
-        else:
-            print("Not deleting")
-        print("////////////////////////////////////////")
+        expired = get_user_age_seconds(fo_user)
+        if expired == True and fo_user != admin:
+            """
+            try:
+                print("Trying To Detach User '{} ' From Policy...".format(fo_user))
+                print("--------------------------------------------")
+                response_policy = policy.detach_user(
+                    UserName=fo_user)
+            except Exception as g:
+                
+                except client.exceptions.NoSuchEntityException :
+                print('Policy Was Not Found')
+                print("--------------------------------------------")
+                """
+                #continue
+
+            """
+            try:
+                print("Trying to Delete Access Key")
+                response_del_acc = client.delete_access_key(
+                AccessKeyId='AKIA54YJ3ITYDA3JMFOU',
+                UserName=fo_user,)
+                print(response_del_acc)
+            except ClientError as e:
+                print("Unexpected error: %s" % e)
+            """
+
+            try:
+                print("Trying To Delete User {}...".format(fo_user))
+                print("--------------------------------------------")
+                response_del = client.delete_user(
+                    UserName=fo_user
+                )
+                print(response_del)
+                print((colored('Deleted Successfully",fo_user', 'green')))
+                print("--------------------------------------------")
+            except ClientError as e:
+                print("Unexpected error: %s" % e)
 
 
-    # TODO Inside the loop, use "get_user_age_seconds" from utils.py to check if the user is older than max_user_age_seconds
-    # TODO Delete the user if his age is greater than max_user_age_seconds
+
+            print("Getting users from IAM...")
+            response_userlist = client.list_users()
+            userlist =response_userlist['User']
+            for x in userlist:
+                print(x)
+
+
 
 if __name__ == '__main__':
     delete_outdated_usernames()

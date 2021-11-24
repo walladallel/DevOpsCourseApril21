@@ -33,12 +33,12 @@ def get_user_age_seconds(username):
 
     else:
         expired_sub = False
-        print("--------------------------------------------")
-    print("Return",expired_sub,user_seconds,max_user_age_seconds)
+        #print("--------------------------------------------")
+    #print("Return",expired_sub,user_seconds,max_user_age_seconds)
     return expired_sub
 
 if __name__ == '__main__':
-    get_user_age_seconds("test")
+    get_user_age_seconds("noamsint")
 
 
 
