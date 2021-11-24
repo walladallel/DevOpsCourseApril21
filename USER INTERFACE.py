@@ -18,7 +18,7 @@ create_user(username)
 print((colored("Hey '{}' And Welcome to Youtube Crawler By Noam -Ver. 1.0.0-beta ".format(username), 'magenta', attrs=['bold'],)))
 print("------------------------------------------------------------")
 
-# Asking User for a Serach String
+# Asking User for a Search String
 # If you only want to download a test video enter ---> youtube-dl test video
 
 search_str = input("Please Enter A Topic To Download: ")
