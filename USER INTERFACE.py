@@ -15,7 +15,7 @@ username = input("Enter Username: ")
 create_user(username)
 
 # Welcome Message for newly subscribed user
-print((colored("Hey '{}' And Welcome to Youtube Crawler Ver. 1.0.0-beta".format(username), 'magenta', attrs=['bold'],)))
+print((colored("Hey '{}' And Welcome to Youtube Crawler By Noam -Ver. 1.0.0-beta ".format(username), 'magenta', attrs=['bold'],)))
 print("------------------------------------------------------------")
 
 # Asking User for a Serach String
