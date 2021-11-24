@@ -10,7 +10,7 @@ def search_download(search_str, search_results, username):
         videos = ydl.extract_info(f"ytsearch{search_results}:{search_str}", download=True)['entries']
         return [ydl.prepare_filename(video) for video in videos],
 
-if __name__ == 'USER INTERFACE':
+if __name__ == '__main__':
     downloaded_files = search_download(search_str,search_results,username)
 
     try:
