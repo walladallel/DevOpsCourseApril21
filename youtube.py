@@ -2,7 +2,7 @@ import boto3
 from youtube_dl import YoutubeDL
 from termcolor import colored
 s3_client = boto3.client('s3')
-YDL_OPTIONS = {'format': 'bestaudio', 'noplaylist':'True'}
+YDL_OPTIONS = {'format': 'bestvideo', 'noplaylist':'True'}
 
 
 def search(arg,number):
