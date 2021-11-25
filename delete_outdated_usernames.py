@@ -28,19 +28,18 @@ def delete_outdated_usernames():
                     fo_user = users_d[x]['UserName']
                     expired = get_user_age_seconds(fo_user)
                     if expired == True and fo_user != admin:
-                        """
+
                         try:
                             print("Trying To Detach User '{} ' From Policy...".format(fo_user))
                             print("--------------------------------------------")
                             response_policy = policy.detach_user(
                                 UserName=fo_user)
-                        except Exception as g:
                             
-                            except client.exceptions.NoSuchEntityException :
+                        except client.exceptions.NoSuchEntityException :
                             print('Policy Was Not Found')
                             print("--------------------------------------------")
-                            """
-                            #continue
+
+                            continue
 
                         """
                         try:
@@ -54,13 +53,13 @@ def delete_outdated_usernames():
                         """
 
                         try:
-                            print((colored("Trying To Delete User {}...".format(fo_user), 'Yellow')))
+                            print((colored("Trying To Delete User '{}'...".format(fo_user), 'Yellow')))
                             print("--------------------------------------------")
                             response_del = client.delete_user(
                                 UserName=fo_user
                             )
                             #print(response_del)
-                            print((colored('Deleted Successfully",fo_user', 'green')))
+                            print((colored("Deleted Successfully '{}'".format(fo_user), 'green')))
                             print("--------------------------------------------")
                         except ClientError as e:
                             print("Unexpected error: %s" % e)
