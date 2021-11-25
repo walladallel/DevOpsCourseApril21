@@ -1,13 +1,7 @@
--->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 ### Hello And Welcome Youtube Crawler Ver 1.0.1-beta 
-#####*by Noam Strauss*
+#####by Noam Strauss
 * * *
 ___
 GitHub Project :
