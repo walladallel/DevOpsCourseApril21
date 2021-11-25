@@ -2,6 +2,10 @@ import boto3
 from youtube_dl import YoutubeDL
 from termcolor import colored
 s3_client = boto3.client('s3')
+
+#TODO Define Bucket Name to upload Videos
+bucket ='youtube-crawler-bucket'
+
 YDL_OPTIONS = {'format': 'bestvideo', 'noplaylist':'True'}
 
 # Youtube-DL Serach Function
@@ -17,7 +21,7 @@ def upload(username,search_str,number):
     try:
         for a in downloaded_files[0]:
             try:
-                s3_client.upload_file(a, 'youtube-crawler-bucket',username + "/" + a)
+                s3_client.upload_file(a, bucket,username + "/" + a)
                 print((colored("Successfully Downloaded {} ".format(a), 'green')))
             except Exception as g:
                 print("Error", g)

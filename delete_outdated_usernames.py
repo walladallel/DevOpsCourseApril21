@@ -6,26 +6,32 @@ from yes_or_no import yes_or_no
 import time
 client = boto3.client('iam')
 
-# Admin UserName To be ignored
+#TODO Define Admin UserName To be ignored
 admin = "noamsint"
+
+#TODO Define Policy To Delete From Expired Users
+user_policy = 'arn:aws:iam::955114013936:policy/S3VideoReader'
+
 
 
 def delete_outdated_usernames():
 
-    # Deletes users older than max_user_age_seconds
+    # Asking If To Print Of List Of Users After Deletion
     yes_or_no("Would You Like To Print A list Of Users After Deletion?")
 
+    # Deletes users older than max_user_age_seconds
     while True:
                 client = boto3.client('iam')
 
                 iam = boto3.resource('iam')
 
-                policy = iam.Policy('arn:aws:iam::955114013936:policy/S3VideoReader')
+                policy = iam.Policy(user_policy)
+
                 response = client.list_users()
 
 
                 users_d = (response['Users'])
-               # print(users_d)
+
 
                 for x in range(len(users_d)):
                     fo_user = users_d[x]['UserName']
@@ -37,10 +43,12 @@ def delete_outdated_usernames():
                             print("--------------------------------------------")
                             response_policy = policy.detach_user(
                                 UserName=fo_user)
+                            time.sleep(2)
                             
                         except client.exceptions.NoSuchEntityException :
                             print('Policy Was Not Found')
                             print("--------------------------------------------")
+                            time.sleep(2)
 
 
 
@@ -61,12 +69,14 @@ def delete_outdated_usernames():
                             response_del = client.delete_user(
                                 UserName=fo_user
                             )
-
+                            time.sleep(2)
                             print((colored("Deleted Successfully '{}'".format(fo_user), 'green')))
                             print("--------------------------------------------")
+                            time.sleep(2)
                         except ClientError as e:
                             print("Unexpected error: %s" % e)
                             time.sleep(2)
+
 
 
 
@@ -79,7 +89,7 @@ def delete_outdated_usernames():
                             continue
                 else:
                         continue
-delete_outdated_usernames()
+
 
 
 

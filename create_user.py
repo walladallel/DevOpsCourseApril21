@@ -1,25 +1,29 @@
 import boto3
 from botocore.exceptions import ClientError
 from termcolor import colored
+import time
 client = boto3.client('iam')
+
+#TODO Define Policy To set Users Permissions
+permission = 'arn:aws:iam::955114013936:policy/S3VideoReader'
+
+# An Function That Creates An User In IAM
 def create_user(username):
-    """
-    Create a user "username" with an appropriate permissions (S3VideoReader you've just created)
-    """
 
     while True:
 
         try:
             response = client.create_user(
                 UserName=username,
-                PermissionsBoundary='arn:aws:iam::955114013936:policy/S3VideoReader',
+                PermissionsBoundary=permission,
                 Tags=[
                     {
-                        'Key': 'YoutubeAppSub',
+                        'Key': 'YoutubeAppSubscriber',
                         'Value': username
                     },
                 ]
             )
+            time.sleep(1.2)
             print("------------------------------------------------------------")
             print((colored("Successfully Created User '{}'".format(username), 'green')))
             print("------------------------------------------------------------")
