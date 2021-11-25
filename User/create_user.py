@@ -2,10 +2,8 @@ import boto3
 from botocore.exceptions import ClientError
 from termcolor import colored
 import time
+from config import *
 client = boto3.client('iam')
-
-#TODO Define Policy To set Users Permissions
-permission = 'arn:aws:iam::955114013936:policy/S3VideoReader'
 
 # An Function That Creates An User In IAM
 def create_user(username):

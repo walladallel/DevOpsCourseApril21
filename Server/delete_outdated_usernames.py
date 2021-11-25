@@ -1,17 +1,11 @@
 import boto3
 from botocore.exceptions import ClientError
-from get_user_age_seconds import get_user_age_seconds
+from User.get_user_age_seconds import get_user_age_seconds
 from termcolor import colored
 from yes_or_no import yes_or_no
 import time
+from config import *
 client = boto3.client('iam')
-
-#TODO Define Admin UserName To be ignored
-admin = "noamsint"
-
-#TODO Define Policy To Delete From Expired Users
-user_policy = 'arn:aws:iam::955114013936:policy/S3VideoReader'
-
 
 
 def delete_outdated_usernames():
@@ -25,7 +19,7 @@ def delete_outdated_usernames():
 
                 iam = boto3.resource('iam')
 
-                policy = iam.Policy(user_policy)
+                policy = iam.Policy(permission)
 
                 response = client.list_users()
 

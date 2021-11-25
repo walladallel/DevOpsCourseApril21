@@ -2,10 +2,8 @@ import boto3
 from datetime import datetime, timezone
 from termcolor import colored
 import time
+from config import *
 client = boto3.client('iam')
-
-# Defining An Admin User That Will Not Be Deleted
-admin = "noamsint"
 
 # A Function That Will Check Users Age to Send Age To delete_outdated_usernames Function
 def get_user_age_seconds(username):

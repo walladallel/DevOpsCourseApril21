@@ -1,4 +1,4 @@
-from create_user import create_user
+from User.create_user import create_user
 import pyfiglet
 from termcolor import colored
 import time
@@ -38,7 +38,7 @@ print("------------------------------------------------------------")
 time.sleep(1.2)
 
 # Importing Youtube Downloader And Uploader To AWS S3 Bucket
-from youtube_crawler import upload
+from User.youtube_crawler import upload
 
 # Calling Youtube With search_str,search_results,username
 upload(username,search_str,number)

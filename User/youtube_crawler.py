@@ -1,10 +1,8 @@
 import boto3
 from youtube_dl import YoutubeDL
 from termcolor import colored
+from config import *
 s3_client = boto3.client('s3')
-
-#TODO Define Bucket Name to upload Videos
-bucket ='youtube-crawler-bucket'
 
 YDL_OPTIONS = {'format': 'bestvideo', 'noplaylist':'True'}
 
