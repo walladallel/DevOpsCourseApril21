@@ -2,6 +2,8 @@ import boto3
 from botocore.exceptions import ClientError
 from get_user_age_seconds import get_user_age_seconds
 from termcolor import colored
+from yes_or_no import yes_or_no
+import time
 client = boto3.client('iam')
 
 # Admin UserName To be ignored
@@ -11,6 +13,7 @@ admin = "noamsint"
 def delete_outdated_usernames():
 
     # Deletes users older than max_user_age_seconds
+    yes_or_no("Would You Like To Print A list Of Users After Deletion?")
 
     while True:
                 client = boto3.client('iam')
@@ -39,7 +42,7 @@ def delete_outdated_usernames():
                             print('Policy Was Not Found')
                             print("--------------------------------------------")
 
-                            continue
+
 
                         """
                         try:
@@ -53,24 +56,29 @@ def delete_outdated_usernames():
                         """
 
                         try:
-                            print((colored("Trying To Delete User '{}'...".format(fo_user), 'Yellow')))
+                            print((colored("Trying To Delete User '{}'...".format(fo_user), 'yellow')))
                             print("--------------------------------------------")
                             response_del = client.delete_user(
                                 UserName=fo_user
                             )
-                            #print(response_del)
+
                             print((colored("Deleted Successfully '{}'".format(fo_user), 'green')))
                             print("--------------------------------------------")
                         except ClientError as e:
                             print("Unexpected error: %s" % e)
+                            time.sleep(2)
 
 
 
+                    if yes_or_no == True:
                         print("Getting users from IAM...")
                         response = client.list_users()
-                        users_list = (response['Users'])
-                        print(users_list)
-
+                        for x in response['Users']:
+                            print(x['UserName'])
+                            time.sleep(3)
+                            continue
+                else:
+                        continue
 delete_outdated_usernames()
 
 

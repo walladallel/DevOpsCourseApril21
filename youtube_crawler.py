@@ -4,14 +4,14 @@ from termcolor import colored
 s3_client = boto3.client('s3')
 YDL_OPTIONS = {'format': 'bestvideo', 'noplaylist':'True'}
 
-
+# Youtube-DL Serach Function
 def search(arg,number):
     with YoutubeDL(YDL_OPTIONS) as ydl:
         videos = ydl.extract_info(f"ytsearch{number}:{arg}", download=True)['entries']
         return [ydl.prepare_filename(video) for video in videos],
 
 
-
+# S3 Upload Function
 def upload(username,search_str,number):
     downloaded_files = search(search_str, number)
     try:
