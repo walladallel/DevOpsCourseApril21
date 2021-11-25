@@ -1,3 +1,11 @@
+-->
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
+[![LinkedIn][linkedin-shield]][linkedin-url]
+
 ### Hello And Welcome Youtube Crawler Ver 1.0.1-beta 
 #####*by Noam Strauss*
 * * *
@@ -26,4 +34,4 @@ Run:
 $ pip install -r requirements.txt
 ```
 Fill The Parameters:
-> `Enter Parameters To Config.py in /User & /Server`
+> `Edit Config.py in /User & /Server`
