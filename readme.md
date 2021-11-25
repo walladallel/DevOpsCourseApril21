@@ -2,15 +2,28 @@
 #####*by Noam Strauss*
 * * *
 ___
-This Project :
+GitHub Project :
 
 [Click Here To Open My Git](https://github.com/Noamstrauss/YouTube_Crawler)
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+## General info
+This App Downloads Videos From YouTube And Uploads It To AWS S3 Bucket.
 
 
-* * *
-___
-This App Downloads Videos From YouTube And Uploads It To AWS S3 Bucket
+## Technologies
+Project is created with:
+* Python
+	
+## Setup
+To run this project, install requirements.txt
 
-
-
-> `To Use This Application Enter Parameters To Config.py in /User & /Server`
+Run:
+```
+$ pip install -r requirements.txt
+```
+Fill The Parameters:
+> `Enter Parameters To Config.py in /User & /Server`
