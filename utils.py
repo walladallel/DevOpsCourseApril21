@@ -19,3 +19,4 @@ def most_frequent_char(my_str):
     'aabb' -> 'a' or 'b' are both valid returned values
     """
     pass
+
