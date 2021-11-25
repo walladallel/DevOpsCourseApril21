@@ -5,6 +5,7 @@ pipeline {
       steps {
         echo 'Testing..'
         sh 'python -m unittest'
+        echo 'Done'
       }
     }
   }
