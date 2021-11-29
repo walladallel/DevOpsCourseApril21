@@ -47,14 +47,16 @@ while play:
 
         #Asking User If To Create Another User
         print("------------------------------------------------------------")
-        yes_or_no("Do You Want To Create Another User?")
-        if yes_or_no == True:
+        play=yes_or_no("Do You Want To Create Another User?")
+        if play == True:
             play = True
+            continue
         else:
             play = False
+            pass
 
-    except KeyboardInterrupt:
-        print("User Canceled Operation")
+
+    except:
         pass
 
 
