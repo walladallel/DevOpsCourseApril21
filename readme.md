@@ -1,6 +1,6 @@
-<h1 align="center"> Welcome To Youtube Crawler Ver 1.1.0-b 👋</h1>
+<h1 align="center"> Youtube Crawler🎵</h1>
 <p align="center">
-  <a href="https://github.com/alonitac/DevOpsCourseApril21/tree/Noams_Branch">
+  <a href="https://github.com/Noamstrauss/YouTube_Crawler">
     <img src="https://img.shields.io/badge/changelog-gitmoji-brightgreen.svg" alt="gitmoji-changelog">
   </a>
 </p>
