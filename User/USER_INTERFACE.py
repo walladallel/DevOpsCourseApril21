@@ -24,7 +24,7 @@ while play:
 
         # Greeting The New User
         time.sleep(1.2)
-        print((colored("Hey there {} lets Start Having Fun!\U0001f60d ".format(username), 'cyan',)))
+        print((colored("Hey there {} lets Start Having Fun!\U0001f60d ".format(username), 'cyan', )))
         print("------------------------------------------------------------")
         time.sleep(1.2)
 
@@ -43,11 +43,11 @@ while play:
         from User.youtube_crawler import upload
 
         # Calling Youtube With search_str,search_results,username
-        upload(username,search_str,number)
+        upload(username, search_str, number)
 
-        #Asking User If To Create Another User
+        # Asking User If To Create Another User
         print("------------------------------------------------------------")
-        play=yes_or_no("Do You Want To Create Another User?")
+        play = yes_or_no("Do You Want To Create Another User?")
         if play == True:
             play = True
             continue
@@ -56,8 +56,10 @@ while play:
             pass
 
 
-    except:
-        pass
+
+    except KeyboardInterrupt:
+        print('interrupted!')
+
 
 
 # Printing A User A Thank You Note

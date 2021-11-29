@@ -7,3 +7,5 @@ infra/.terraform.lock.hcl
 User/*.mp4
 User/*.m4a
 User/*.webm
+User/*.part
+
