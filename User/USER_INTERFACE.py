@@ -1,7 +1,9 @@
 from User.create_user import create_user
-import pyfiglet
 from termcolor import colored
+from yes_or_no import yes_or_no
+from number_input import number_vali
 import time
+import pyfiglet
 
 # App Welcome Sign
 welcome = pyfiglet.figlet_format("Youtube Crawler")
@@ -11,41 +13,56 @@ print(welcome)
 print((colored("Welcome to Youtube Crawler By Noam -Ver. 1.1.0-beta ", 'blue', attrs=['bold'],)))
 print("------------------------------------------------------------")
 time.sleep(1.2)
+play = True
+while play:
+    try:
+        # Asking for Username and Creating a User
+        username = input("Please Enter A Username: ")
 
+        # Creating a username for Youtube Crawler
+        create_user(username)
 
+        # Greeting The New User
+        time.sleep(1.2)
+        print((colored("Hey there {} lets Start Having Fun!\U0001f60d ".format(username), 'cyan',)))
+        print("------------------------------------------------------------")
+        time.sleep(1.2)
 
-# Asking for Username and Creating a User
-username = input("Please Enter A Username: ")
+        # Asking User for a Search String
+        # If you only want to download a short test video enter ---> youtube-dl test video
+        search_str = input("Please Enter A Topic To Download: ")
+        print("------------------------------------------------------------")
+        time.sleep(1.2)
 
-# Creating a username for Youtube Crawler
-create_user(username)
+        # Asking User For A Number Of Videos To Download
+        number = number_vali("Please Enter A Number Of Videos To Download: ")
+        print("------------------------------------------------------------")
+        time.sleep(1.2)
 
-# Greeting The New User
-time.sleep(1.2)
-print((colored("Hey there {} lets Start Having Fun!\U0001f60d ".format(username), 'cyan',)))
-print("------------------------------------------------------------")
-time.sleep(1.2)
+        # Importing Youtube Downloader And Uploader To AWS S3 Bucket
+        from User.youtube_crawler import upload
 
-# Asking User for a Search String
-# If you only want to download a short test video enter ---> youtube-dl test video
-search_str = input("Please Enter A Topic To Download: ")
-print("------------------------------------------------------------")
-time.sleep(1.2)
+        # Calling Youtube With search_str,search_results,username
+        upload(username,search_str,number)
 
-# Asking User For A Number Of Videos To Download
-number = input("Please Enter A Number Of Videos To Download: ")
-print("------------------------------------------------------------")
-time.sleep(1.2)
+        #Asking User If To Create Another User
+        print("------------------------------------------------------------")
+        yes_or_no("Do You Want To Create Another User?")
+        if yes_or_no == True:
+            play = True
+        else:
+            play = False
 
-# Importing Youtube Downloader And Uploader To AWS S3 Bucket
-from User.youtube_crawler import upload
+    except KeyboardInterrupt:
+        print("User Canceled Operation")
+        pass
 
-# Calling Youtube With search_str,search_results,username
-upload(username,search_str,number)
 
 # Printing A User A Thank You Note
 print("------------------------------------------------------------")
-print((colored('Thank You {} for Using Youtube Crawler By Noam \U0001f60d'.format(username), 'blue', attrs=['bold'],)))
+print((colored('Thank You for Using Youtube Crawler By Noam \U0001f60d', 'blue', attrs=['bold'],)))
+print("------------------------------------------------------------")
+print("See You Next Time \U0001f60d")
 print("------------------------------------------------------------")
 exit(0)
 
