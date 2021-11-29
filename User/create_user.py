@@ -36,10 +36,11 @@ def create_user(username):
                 continue
             else:
                 print("Unexpected error: %s" % e)
+                username = input("Enter Username: ")
                 continue
 
 
 
 
 if __name__ == '__main__':
-    create_user("test1")
+    create_user(" ")

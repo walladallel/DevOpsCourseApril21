@@ -58,7 +58,7 @@ while play:
 
 
     except KeyboardInterrupt:
-        print('interrupted!')
+        print('Interrupted!')
 
 
 
