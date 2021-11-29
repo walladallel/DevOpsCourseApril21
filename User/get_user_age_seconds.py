@@ -19,15 +19,14 @@ def get_user_age_seconds(username):
 
 
 # Printing User Age To Server
-    if username == admin:
-        print("The Are No Subscribers Yet")
-        time.sleep(5)
+    if username != admin:
+        print("User ' {} ' is active (sec):".format(username),
+              (datetime.now(timezone.utc) - user_create_date).total_seconds())
     else:
-        print("User ' {} ' is active (sec):".format(username),(datetime.now(timezone.utc) - user_create_date).total_seconds())
+        print("The Are No Subscribers")
+        time.sleep(3.5)
 
-# Defining Maximum Subscriber Age in Seconds
-    #max_user_age_seconds = (172800.0)
-    max_user_age_seconds = (2.0)
+
 
 # Calculating Users Age in Seconds
     user_seconds = (datetime.now(timezone.utc) - user_create_date).total_seconds()

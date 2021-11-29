@@ -8,7 +8,7 @@ welcome = pyfiglet.figlet_format("Youtube Crawler")
 print(welcome)
 
 # Welcome Message for newly subscribed user
-print((colored("Welcome to Youtube Crawler By Noam -Ver. 1.0.1-beta ", 'blue', attrs=['bold'],)))
+print((colored("Welcome to Youtube Crawler By Noam -Ver. 1.1.0-beta ", 'blue', attrs=['bold'],)))
 print("------------------------------------------------------------")
 time.sleep(1.2)
 

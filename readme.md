@@ -1,4 +1,4 @@
-<h1 align="center"> Welcome Youtube Crawler Ver 1.0.1-b 👋</h1>
+<h1 align="center"> Welcome To Youtube Crawler Ver 1.1.0-b 👋</h1>
 <p align="center">
   <a href="https://github.com/alonitac/DevOpsCourseApril21/tree/Noams_Branch">
     <img src="https://img.shields.io/badge/changelog-gitmoji-brightgreen.svg" alt="gitmoji-changelog">
@@ -33,4 +33,5 @@ Run:
 $ pip install -r requirements.txt
 ```
 Fill The Parameters:
-> `Edit Config.py in /User & /Server`
+> `Complete TODO'S In Config.py in /User & /Server Folders`
+> 

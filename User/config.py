@@ -10,6 +10,10 @@ admin = "noamsint"
 #TODO Define Bucket Name to upload Videos
 bucket ='youtube-crawler-bucket'
 
+#TODO Define User Maximun Subscriber age
+max_user_age_seconds = (2.0)
+#max_user_age_seconds = (172800.0)
+
 
 
 

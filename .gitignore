@@ -4,3 +4,6 @@ infra/.terraform
 infra/.terraform.lock.hcl
 *.m4a
 *.mp4
+User/*.mp4
+User/*.m4a
+User/*.webm
