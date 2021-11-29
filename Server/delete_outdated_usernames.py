@@ -20,80 +20,83 @@ def delete_outdated_usernames():
 
     # Deletes users older than max_user_age_seconds
     while True:
+            try:
+                    response = client.list_users()
 
-                response = client.list_users()
+                    users_d = (response['Users'])
 
-                users_d = (response['Users'])
+                    for x in range(len(users_d)):
+                        fo_user = users_d[x]['UserName']
+                        expired = get_user_age_seconds(fo_user)
+                        if expired == True and fo_user != admin:
 
-                for x in range(len(users_d)):
-                    fo_user = users_d[x]['UserName']
-                    expired = get_user_age_seconds(fo_user)
-                    if expired == True and fo_user != admin:
+                            try:
+                                print((colored("Trying To Detach User '{} ' From Policy...".format(fo_user), 'yellow')))
+                                print("--------------------------------------------")
+                                response_policy = policy.detach_user(
+                                    UserName=fo_user)
+                                time.sleep(2)
 
-                        try:
-                            print("Trying To Detach User '{} ' From Policy...".format(fo_user))
-                            print("--------------------------------------------")
-                            response_policy = policy.detach_user(
-                                UserName=fo_user)
-                            time.sleep(2)
-
-                        except client.exceptions.NoSuchEntityException :
-                            print('Policy Was Not Found')
-                            print("--------------------------------------------")
-                            time.sleep(2)
+                            except client.exceptions.NoSuchEntityException :
+                                print('Policy Was Not Found')
+                                print("--------------------------------------------")
+                                time.sleep(2)
 
 
 
-                        """
-                        try:
-                            print("Trying to Delete Access Key")
-                            response_del_acc = client.delete_access_key(
-                            AccessKeyId='AKIA54YJ3ITYDA3JMFOU',
-                            UserName=fo_user,)
-                            print(response_del_acc)
-                        except ClientError as e:
-                            print("Unexpected error: %s" % e)
-                        """
-                             # Trying To Delete User From IAM
-                        try:
-                            print((colored("Trying To Delete User '{}'...".format(fo_user), 'yellow')))
-                            print("--------------------------------------------")
-                            response_del = client.delete_user(
-                                UserName=fo_user
-                            )
-                            time.sleep(2)
-                            print((colored("Deleted Successfully '{}'".format(fo_user), 'green')))
-                            print("--------------------------------------------")
-                            time.sleep(2)
-                        except ClientError as e:
-                            print("Unexpected error: %s" % e)
-                            time.sleep(2)
+                            """
+                            try:
+                                print("Trying to Delete Access Key")
+                                response_del_acc = client.delete_access_key(
+                                AccessKeyId='AKIA54YJ3ITYDA3JMFOU',
+                                UserName=fo_user,)
+                                print(response_del_acc)
+                            except ClientError as e:
+                                print("Unexpected error: %s" % e)
+                            """
+                                 # Trying To Delete User From IAM
+                            try:
+                                print((colored("Trying To Delete User '{}'...".format(fo_user), 'yellow')))
+                                print("--------------------------------------------")
+                                response_del = client.delete_user(
+                                    UserName=fo_user
+                                )
+                                time.sleep(2)
+                                print((colored("Deleted Successfully '{}'".format(fo_user), 'green')))
+                                print("--------------------------------------------")
+                                time.sleep(2)
+                            except ClientError as e:
+                                print("Unexpected error: %s" % e)
+                                time.sleep(2)
 
-                            # Trying To Delete Users Files From S3 Bucket After He Expired
-                        try:
-                            print((colored("Trying To Delete Users '{}' Files...".format(fo_user), 'yellow')))
-                            print("--------------------------------------------")
-                            path = fo_user+"/"
-                            bucket1 = s3.Bucket(bucket)
-                            bucket1.objects.filter(Prefix=path).delete()
-                            print((colored("Deleted Successfully '{}' Files".format(fo_user), 'green')))
-                            print("--------------------------------------------")
-                            time.sleep(2)
-                        except ClientError as e:
-                            print("Unexpected error: %s" % e)
-                            time.sleep(2)
+                                # Trying To Delete Users Files From S3 Bucket After He Expired
+                            try:
+                                print((colored("Trying To Delete Users '{}' Files...".format(fo_user), 'yellow')))
+                                print("--------------------------------------------")
+                                path = fo_user+"/"
+                                bucket1 = s3.Bucket(bucket)
+                                bucket1.objects.filter(Prefix=path).delete()
+                                print((colored("Deleted Successfully '{}' Files".format(fo_user), 'green')))
+                                print("--------------------------------------------")
+                                time.sleep(2)
+                            except ClientError as e:
+                                print("Unexpected error: %s" % e)
+                                time.sleep(2)
 
-                            # If Statement Is True Printing Active Users In IAM
-                    if yes_or_no == True:
-                        print("Getting users from IAM...")
-                        response = client.list_users()
-                        for x in response['Users']:
-                            print(x['UserName'])
-                            time.sleep(3)
-                            continue
-                else:
-                        continue
-
+                                # If Statement Is True Printing Active Users In IAM
+                        if yes_or_no == True:
+                            print("Getting users from IAM...")
+                            response = client.list_users()
+                            for x in response['Users']:
+                                print(x['UserName'])
+                                time.sleep(3)
+                                continue
+                    else:
+                            print("There Are No Sub's")
+                            time.sleep(3.5)
+            except KeyboardInterrupt:
+                print('Interrupted!')
+                exit(1)
 
 
 

@@ -23,8 +23,7 @@ def get_user_age_seconds(username):
         print("User ' {} ' is active (sec):".format(username),
               (datetime.now(timezone.utc) - user_create_date).total_seconds())
     else:
-        print("The Are No Subscribers")
-        time.sleep(3.5)
+        pass
 
 
 
