@@ -6,9 +6,9 @@ pipeline {
         echo 'Testing..'
         sh 'python -m unittest'
         echo 'Done'
+        sh 'echo "hi"'
       }
     }
+
   }
 }
-
-
