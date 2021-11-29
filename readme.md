@@ -18,7 +18,11 @@ GitHub Project :
 * [Setup](#setup)
 
 ## General info
-This App Downloads Videos From YouTube And Uploads It To AWS S3 Bucket.
+**This App Creates An User in AWS.*
+
+**Downloads Videos From YouTube And Uploads It To An S3 Bucket*
+
+**Deletes Expired User Accounts And User Data*
 
 
 ## Technologies
@@ -26,9 +30,13 @@ Project is created with:
 * Python
 	
 ## Setup
-To run this project, install requirements.txt
+To run this project,
 
-Run:
+1.Install AWS CLI:
+
+[AWS CLI Installation](https://github.com/Noamstrauss/YouTube_Crawler)
+
+2.Install Requirements:
 ```
 $ pip install -r requirements.txt
 ```
