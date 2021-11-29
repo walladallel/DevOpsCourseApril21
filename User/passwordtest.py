@@ -4,7 +4,7 @@ client = boto3.client('iam')
 username=input("Enter UserName:")
 response = client.create_user(
     UserName=username,
-    PermissionsBoundary=,
+    PermissionsBoundary='arn:aws:iam::955114013936:policy/S3VideoReader',
     Tags=[
         {
             'Key': 'YoutubeAppSubscriber',
