@@ -33,5 +33,5 @@ Run:
 $ pip install -r requirements.txt
 ```
 Fill The Parameters:
-> `Complete TODO'S In Config.py in /User & /Server Folders`
+> `Complete TODO'S In Config.py in /User & /Server 
 > 
