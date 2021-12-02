@@ -21,4 +21,5 @@ if __name__ == '__main__':
     downloaded_files = search_download('הגשש', 5)
 
     # TODO use downloaded_files and complete a few lines to upload them to an S3 bucket
+    my changes....
 
