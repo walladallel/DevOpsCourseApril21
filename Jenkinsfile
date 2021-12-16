@@ -10,7 +10,7 @@ pipeline {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
       steps{
           sh '''
-            echo whoami
+            whoami
             IMG_NAME=simple-web-server:$BUILD_NUMBER
             echo "Building $IMG_NAME"
             docker build -t $IMG_NAME .
