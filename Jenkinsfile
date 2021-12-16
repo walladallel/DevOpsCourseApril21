@@ -7,8 +7,9 @@ pipeline {
 
   stages {
     stage('Clone repository') {
-
-          git clone https://github.com/alonitac/DevOpsCourseApril21.git
+        steps{
+         sh 'git clone https://github.com/alonitac/DevOpsCourseApril21.git'
+        }
      }
     stage('Build') {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
