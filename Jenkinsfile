@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Clone repository') {
 
-              checkout scm
+          git clone https://github.com/alonitac/DevOpsCourseApril21.git
      }
     stage('Build') {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
