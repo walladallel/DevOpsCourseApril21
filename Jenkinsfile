@@ -6,6 +6,10 @@ pipeline {
   }
 
   stages {
+    stage('Clone repository') {
+
+              checkout scm
+     }
     stage('Build') {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
       steps{
