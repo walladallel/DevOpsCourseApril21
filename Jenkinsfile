@@ -12,9 +12,9 @@ pipeline {
           sh '''
             IMG_NAME=simple-web-server:$BUILD_NUMBER
             echo "Building $IMG_NAME"
-            docker build -t $IMG_NAME .
-            docker tag $IMG_NAME ${REGISTRY}/$IMG_NAME
-            docker push ${REGISTRY}/$IMG_NAME
+            sudo docker build -t $IMG_NAME .
+            sudo docker tag $IMG_NAME ${REGISTRY}/$IMG_NAME
+            sudo docker push ${REGISTRY}/$IMG_NAME
           '''
       }
     }
