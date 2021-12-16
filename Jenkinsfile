@@ -6,6 +6,11 @@ pipeline {
   }
 
   stages {
+    stage('Clone repository') {
+        steps{
+         sh 'git clone https://github.com/alonitac/DevOpsCourseApril21.git'
+        }
+     }
     stage('Build') {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
       steps{
