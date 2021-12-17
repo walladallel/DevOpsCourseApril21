@@ -5,7 +5,7 @@ pipeline {
             when { anyOf {branch "master";branch "dev"} }
             steps {
                 sh '''
-                cd infra/${TARGET_ENV}
+                cd infra/${BRANCH_NAME}
                 terraform init
                 terraform validate
                 '''
@@ -15,7 +15,7 @@ pipeline {
             when { anyOf {branch "master";branch "dev"} }
             steps {
                 sh '''
-                cd infra/${TARGET_ENV}
+                cd infra/${BRANCH_NAME}
                 terraform plan
                 '''
             }
