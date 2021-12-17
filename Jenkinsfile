@@ -20,6 +20,15 @@ pipeline {
                 '''
             }
         }
+        stage('TF apply') {
+           when { anyOf {branch "master";branch "dev"} }
+           steps {
+               sh '''
+               cd infra/${BRANCH_NAME}
+               terraform apply -auto-approve
+               '''
+           }
+        }
     }
 }
 
