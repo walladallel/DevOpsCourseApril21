@@ -20,5 +20,6 @@ resource "aws_instance" "Terraform-Test-ec2" {
 
   tags = {
     Name = "ExampleAppServerInstance"
+    Terraform = "True"
   }
 }
