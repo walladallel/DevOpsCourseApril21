@@ -5,18 +5,19 @@ pipeline {
         REGISTRY = "228281126655.dkr.ecr.us-east-1.amazonaws.com"
     }
 
-      stage('TF init & validate') {
-        when { anyOf {branch "master";branch "dev"} }
-        steps {
-            sh '''
-              cd infra/${TARGET_ENV}
-              terraform init
-              terraform validate
-            '''
-        }
-      }
+
 
   stages {
+    stage('TF init & validate') {
+          when { anyOf {branch "master";branch "dev"} }
+          steps {
+              sh '''
+                cd infra/${TARGET_ENV}
+                terraform init
+                terraform validate
+              '''
+          }
+        }
     stage('Build') {
       when { anyOf {branch "master";branch "dev";changeRequest() } }
         steps {
