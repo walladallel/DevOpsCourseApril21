@@ -14,7 +14,10 @@ pipeline {
         stage('TF plan') {
             when { anyOf {branch "master";branch "dev"} }
             steps {
-                sh 'terraform plan'
+                sh '''
+                cd infra/${TARGET_ENV}
+                terraform plan
+                '''
             }
         }
     }
