@@ -20,3 +20,4 @@ def most_frequent_char(my_str):
     """
     for i in range(100):
         print(i)
+
