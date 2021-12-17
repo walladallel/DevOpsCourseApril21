@@ -2,7 +2,7 @@ pipeline {
   agent any
 
    environment {
-        REGISTRY = "228281126655.dkr.ecr.us-east-1.amazonaws.com/jenkins-cr"
+        REGISTRY = "228281126655.dkr.ecr.us-east-1.amazonaws.com"
     }
 
   stages {
