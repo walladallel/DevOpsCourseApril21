@@ -13,6 +13,7 @@ pipeline {
 
                 script {
                   sh '''
+                  aws ecr get-login-password --region region | docker login --username AWS --password-stdin 228281126655.dkr.ecr.us-east-1.amazonaws.com
                     IMG_NAME=simple-web-server:$BUILD_NUMBER
                     echo "Building $IMG_NAME"
                     docker build -t $IMG_NAME .
