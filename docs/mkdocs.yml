@@ -1,4 +1,5 @@
 site_name: DevOps Documentation
 nav:
   - Home: index.md
-  - JenkinsEC2: about.md
+  - JenkinsEC2: jenkinsEC2.md
+theme: readthedocs

@@ -7,8 +7,11 @@ SSH to in VM, install Git, Docker, and Terraform
 Add jenkins linux user the docker group, so Jenkins could run docker commands:
 sudo usermod -a -G docker jenkins
 Define docker to automatically start on boot by default:
+```shell
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
+```
+
 Then restart jenkins by http://<ip>:8080/safeRestart
 Fork https://github.com/alonitac/DevOpsCourseApril21.git
 Visit you Jenkins server via http://<ip>:8080
