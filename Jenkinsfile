@@ -1,12 +1,19 @@
 pipeline {
   agent any
+
+  environment {
+       REGISTRY = "<YOUR CONTAINER REGISTRY HERE>"
+  }
+
   stages {
-    stage('Test') {
-      steps {
-        echo 'Testing..'
-        sh 'python -m unittest'
-        echo 'Done'
-      }
+    stage('Build') {
+      when { anyOf {branch "master";branch "dev"} }
+        steps {
+            echo 'Starting to build docker image'
+            script {
+              sh ''
+            }
+        }
     }
   }
 }
