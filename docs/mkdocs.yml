@@ -1,0 +1,4 @@
+site_name: DevOps Documentation
+nav:
+  - Home: index.md
+  - JenkinsEC2: about.md
