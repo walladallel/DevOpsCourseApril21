@@ -12,9 +12,15 @@ pipeline {
             echo 'Starting to build docker image'
             echo 'Authenticating aws docker registry'
             sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REGISTRY'
-            // echo 'Building Docker image...'
-            // sh 'docker build -t simple-flask-app .'
-
+            echo 'Building Docker image...'
+            sh 'ls'
+            sh 'pwd'
+            sh '''
+                IMG="simple-flask-app:0.0.${BUILD_NUMBER}"
+                docker build -t $IMG .
+                docker tag $IMG $REGISTRY/$IMG
+                docker push $REGISTRY/$IMG
+            '''
         }
     }
   }
