@@ -1,26 +1,36 @@
 pipeline {
   agent any
 
-  environment {
-       REGISTRY = "228281126655.dkr.ecr.us-east-1.amazonaws.com"
-  }
-
   stages {
-    stage('Build') {
-      when { anyOf {branch "master";branch "dev"} }
+    stage('Terraform Init & Plan'){
+        when { anyOf {branch "master";branch "dev";changeRequest()} }
         steps {
-            echo 'Starting to build docker image'
-            echo 'Authenticating aws docker registry'
-            sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REGISTRY'
-            echo 'Building Docker image...'
-            sh 'ls'
-            sh 'pwd'
             sh '''
-                IMG="simple-flask-app:0.0.${BUILD_NUMBER}"
-                docker build -t $IMG .
-                docker tag $IMG $REGISTRY/$IMG
-                docker push $REGISTRY/$IMG
+            if [ "$BRANCH_NAME" = "master" || "$CHANGE_TARGET" = "master" ]; then
+                cd infra/prod
+            else
+                cd infra/dev
+            fi
             '''
+
+            // YOUR CODE HERE
+
+
+        }
+    }
+
+    stage('Terraform Apply'){
+        when { anyOf {branch "master";branch "dev"} }
+        input{
+            message "Do you want to proceed for infrastructure provisioning?"
+        }
+        steps {
+            sh '''
+
+            cd infra/dev
+
+            '''
+            archiveArtifacts artifacts: 'tf_state/**/*.jar', fingerprint: true
         }
     }
   }
