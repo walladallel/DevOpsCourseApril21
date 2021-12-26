@@ -33,7 +33,7 @@ pipeline {
             ls
             '''
 
-            archiveArtifacts artifacts: 'tf_state/**/*.jar', fingerprint: true
+            archiveArtifacts artifacts: 'terraform.tfstate', fingerprint: true
         }
     }
   }
