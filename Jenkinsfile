@@ -27,7 +27,7 @@ pipeline {
         }
         steps {
             sh '''
-            pwd
+            cd infra/dev
             terraform apply
             ls
             '''
