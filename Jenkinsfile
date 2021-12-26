@@ -6,15 +6,14 @@ pipeline {
         when { anyOf {branch "master";branch "dev";changeRequest()} }
         steps {
             sh '''
-            if [ "$BRANCH_NAME" == "master" || "$CHANGE_TARGET" == "master" ]; then
+            if [ "$BRANCH_NAME" = "master" ] || [ "$CHANGE_TARGET" = "master" ]; then
                 cd infra/prod
             else
                 cd infra/dev
-                echo "dev"
             fi
 
             // YOUR CODE HERE
-//             terraform init
+            terraform init
 
             '''
 
