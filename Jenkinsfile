@@ -26,9 +26,10 @@ pipeline {
             message "Do you want to proceed for infrastructure provisioning?"
         }
         steps {
+            copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
             sh '''
             cd infra/dev
-            terraform apply
+            terraform apply -auto-approve
             ls
             '''
 
