@@ -10,10 +10,11 @@ pipeline {
                 cd infra/prod
             else
                 cd infra/dev
+                echo "dev"
             fi
 
             // YOUR CODE HERE
-            terraform init
+//             terraform init
 
             '''
 
@@ -27,6 +28,7 @@ pipeline {
             message "Do you want to proceed for infrastructure provisioning?"
         }
         steps {
+            copyArtifacts filter: 'test.zip', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
             sh '''
 
             cd infra/dev
