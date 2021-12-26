@@ -12,7 +12,7 @@ pipeline {
                 cd infra/dev
             fi
 
-            terraform init
+            # your code here
 
             '''
 
@@ -26,14 +26,9 @@ pipeline {
             message "Do you want to proceed for infrastructure provisioning?"
         }
         steps {
-            copyArtifacts filter: 'infra/dev/terraform.tfstate', fingerprintArtifacts: true, projectName: '${JOB_NAME}'
             sh '''
-            cd infra/dev
-            terraform apply -auto-approve
-            ls
+                # your code here
             '''
-
-            archiveArtifacts artifacts: 'infra/dev/terraform.tfstate', fingerprint: true
         }
     }
   }
