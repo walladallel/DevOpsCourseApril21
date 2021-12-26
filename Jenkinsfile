@@ -12,7 +12,7 @@ pipeline {
                 cd infra/dev
             fi
 
-            // YOUR CODE HERE
+//          YOUR CODE HERE
             terraform init
 
             '''
