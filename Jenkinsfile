@@ -28,7 +28,8 @@ pipeline {
             sh '''
 
             cd infra/dev
-
+            terraform apply
+            ls
             '''
             archiveArtifacts artifacts: 'tf_state/**/*.jar', fingerprint: true
         }
