@@ -23,4 +23,3 @@ resource "aws_instance" "Terraform-Test-ec2" {
     Terraform = "True"
   }
 }
-
