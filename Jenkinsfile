@@ -32,6 +32,11 @@ pipeline {
         }
         steps {
             sh '''
+            if [ "$BRANCH_NAME" = "master" ] || [ "$CHANGE_TARGET" = "master" ]; then
+                cd infra/prod
+            else
+                cd infra/dev
+            fi
             terraform apply
             archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
             '''
