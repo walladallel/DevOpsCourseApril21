@@ -37,7 +37,7 @@ pipeline {
             else
                 cd infra/dev
             fi
-            terraform apply
+            terraform apply -auto-approve
             archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
             '''
         }
