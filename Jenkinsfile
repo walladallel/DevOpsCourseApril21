@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   stages {
-    stage('Test infra only') {
+    stage('infra only') {
         when { changeset "infra/**"}
         steps {
             echo "infra folder has been changed"
