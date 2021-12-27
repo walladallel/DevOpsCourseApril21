@@ -38,8 +38,8 @@ pipeline {
                 cd infra/dev
             fi
             terraform apply -auto-approve
-            archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
             '''
+            archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
         }
     }
   }
