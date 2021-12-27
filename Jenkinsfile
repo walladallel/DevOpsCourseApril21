@@ -18,17 +18,22 @@ pipeline {
             else
                 cd infra/dev
             fi
+
+            terraform init
+            terraform plan
             '''
         }
     }
 
     stage('Terraform Apply'){
         when { anyOf {branch "master";branch "dev"} }
-        input{
+        input {
             message "Do you want to proceed for infrastructure provisioning?"
         }
         steps {
             sh '''
+            terraform apply
+            archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
             '''
         }
     }
