@@ -33,13 +33,15 @@ pipeline {
         steps {
             sh '''
             if [ "$BRANCH_NAME" = "master" ] || [ "$CHANGE_TARGET" = "master" ]; then
-                cd infra/prod
+                INFRA_ENV=infra/prod
             else
-                cd infra/dev
+                INFRA_ENV=infra/dev
             fi
+            cd $INFRA_ENV
+
             terraform apply -auto-approve
             '''
-            archiveArtifacts artifacts: 'terraform.tfstate', onlyIfSuccessful: true
+            archiveArtifacts artifacts: '$INFRA_ENV/terraform.tfstate', onlyIfSuccessful: true
         }
     }
   }
