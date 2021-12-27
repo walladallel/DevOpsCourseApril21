@@ -1,6 +1,13 @@
 pipeline {
   agent any
 
+  stage('Test infra only') {
+      when { changeset "infra/*"}
+      steps {
+          sh "infra folder has been changed"
+      }
+  }
+
   stages {
     stage('Terraform Init & Plan'){
         when { anyOf {branch "master";branch "dev";changeRequest()} }
@@ -11,12 +18,7 @@ pipeline {
             else
                 cd infra/dev
             fi
-
-            # your code here
-
             '''
-
-
         }
     }
 
@@ -27,7 +29,6 @@ pipeline {
         }
         steps {
             sh '''
-                # your code here
             '''
         }
     }
