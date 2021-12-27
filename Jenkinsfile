@@ -3,7 +3,7 @@ pipeline {
 
   stages {
     stage('Test infra only') {
-        when { changeset "infra/*"}
+        when { changeset "infra/**"}
         steps {
             sh "infra folder has been changed"
         }
